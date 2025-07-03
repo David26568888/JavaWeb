@@ -6,6 +6,20 @@ public class Student {
 	private Integer age;
 	private String level;
 	
+	public Student() {
+		
+	}
+	
+	public Student(String name, String country, Integer age, String level) {
+		super();
+		this.name = name;
+		this.country = country;
+		this.age = age;
+		this.level = level;
+	}
+
+
+
 	public String getName() {
 		return name;
 	}
