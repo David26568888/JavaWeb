@@ -1,0 +1,2 @@
+//以下為 Blockchain網站 讓密碼生成亂碼 用於儲存在DB用
+//https://andersbrownworth.com/blockchain/hash

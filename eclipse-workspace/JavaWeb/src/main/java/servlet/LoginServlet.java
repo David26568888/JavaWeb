@@ -28,6 +28,7 @@ public class LoginServlet extends HttpServlet {
 		// 取得登入表單傳來的 username & password
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
+		String code = req.getParameter("code");
 		
 		// 驗證帳號(是否有此帳號)
 		if(!(username.equals("admin"))) {
@@ -42,7 +43,15 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		HttpSession session = req.getSession();
-		session.setAttribute("username", username);//login 登入成功以後才有username
+		
+		// 驗證碼是否正確
+		String sessionCode = session.getAttribute("code").toString();
+		if(!code.equals(sessionCode)) {
+			resp.getWriter().print("驗證碼錯誤!");
+			return;
+		}		
+		
+		session.setAttribute("username", username); // 登入成功之後才有的 username
 		
 		resp.getWriter().print("Hi " + username + " 您好!");
 		resp.getWriter().print("<p />");
