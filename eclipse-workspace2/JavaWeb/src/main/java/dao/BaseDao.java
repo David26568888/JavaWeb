@@ -3,8 +3,9 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-//負責管理資料庫中的連線
+// 負責管理資料庫連線
 public class BaseDao {
+	
 	private static Connection conn;
 	
 	static {
@@ -19,11 +20,8 @@ public class BaseDao {
 		}
 	}
 	
-	public Connection getConnection() {
+	protected Connection getConnection() {
 		return conn;
 	}
+	
 }
-
-//問GPT
-//"jdbc:mysql://localhost:3306/web"
-//加上時區參數 + utf8 + not use SSL
