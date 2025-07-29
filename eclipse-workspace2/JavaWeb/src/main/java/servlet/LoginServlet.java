@@ -63,14 +63,20 @@ public class LoginServlet extends HttpServlet {
 			req.setAttribute("message", "驗證碼錯誤");
 			req.getRequestDispatcher("/WEB-INF/view/result.jsp").forward(req, resp);
 			return;
-		}		
+		}	
+		//----------------------------------------
+		//登入成功
 		
-		session.setAttribute("username", username); // 登入成功之後才有的 username
-		// 取得使用這列表資料給 user.jsp 顯示使用
-		List<User> users = userService.findAllUsers();
-		req.setAttribute("users", users);
-		// 重導到使用者頁面
-		req.getRequestDispatcher("/WEB-INF/view/user.jsp").forward(req, resp);
+	
+		
+		 // 登入成功之後才有的 username
+		session.setAttribute("username", username);
+		 // 登入成功之後才有的 priority
+		session.setAttribute("priority", user.getPriority());
+		//	session.setAttribute("user", user)
+		
+		//重導到使用者頁面
+		resp.sendRedirect("/JavaWeb/user");
 		
 	}
 	

@@ -17,7 +17,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	public List<User> findAllUsers() {
 		List<User> users = new ArrayList<>();
 		
-		String sql = "select id, username, hash, salt from user order by id";
+		String sql = "select id, username, hash, salt, priority from user order by id";
 		try(Statement stmt = getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery(sql)) {
 			
@@ -27,12 +27,14 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 				String username = rs.getString("username");
 				String hash = rs.getString("hash");
 				String salt = rs.getString("salt");
+				int priority = rs.getInt("priority");
 				// 建立 user 物件
 				User user = new User();
 				user.setId(id);
 				user.setUsername(username);
 				user.setHash(hash);
 				user.setSalt(salt);
+				user.setPriority(priority);
 				// 注入到 users 集合中
 				users.add(user);
 			}
@@ -48,7 +50,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	public User getUserById(Integer uid) {
 		User user = null;
 		
-		String sql = "select id, username, hash, salt from user where id = ?";
+		String sql = "select id, username, hash, salt, priority from user where id = ?";
 		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
 			// 設定 sql 參數
 			pstmt.setInt(1, uid);
@@ -59,12 +61,14 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 					String username = rs.getString("username");
 					String hash = rs.getString("hash");
 					String salt = rs.getString("salt");
+					int priority = rs.getInt("priority");
 					// 建立 user 物件
 					user = new User();
 					user.setId(id);
 					user.setUsername(username);
 					user.setHash(hash);
 					user.setSalt(salt);
+					user.setPriority(priority);
 				}
 			}
 		} catch (SQLException e) {
@@ -77,7 +81,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	public User getUserByUsername(String name) {
 		User user = null;
 		
-		String sql = "select id, username, hash, salt from user where username = ?";
+		String sql = "select id, username, hash, salt, priority from user where username = ?";
 		try(PreparedStatement pstmt = getConnection().prepareStatement(sql)) {
 			// 設定 sql 參數
 			pstmt.setString(1, name);
@@ -88,12 +92,14 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 					String username = rs.getString("username");
 					String hash = rs.getString("hash");
 					String salt = rs.getString("salt");
+					int priority = rs.getInt("priority");
 					// 建立 user 物件
 					user = new User();
 					user.setId(id);
 					user.setUsername(username);
 					user.setHash(hash);
 					user.setSalt(salt);
+					user.setPriority(priority);
 				}
 			}
 		} catch (SQLException e) {
