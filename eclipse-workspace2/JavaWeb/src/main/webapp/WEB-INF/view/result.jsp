@@ -9,15 +9,20 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 	</head>
 	<body style="padding: 20px">
+			<%if (session.getAttribute("username")==null) {%>
+				<span style="font-size: 36px ; font-weight: bold" > 
+			GoodBye 期待再相逢
+		</span>
+			<%}%><p/>
+		<!-- menu-->
+		<%@include file="/WEB-INF/view/menu.jspf" %>
 		
 		<!-- 結果頁面 -->
 		<div class="pure-form">
 			<fieldset>
 				<legend>結果頁面</legend>
 				結果: <%=request.getAttribute("message") %><p />
-				<a href="/JavaWeb/login" class="pure-button pure-button-primary">登入頁</a>
-				<a href="/JavaWeb/register" class="pure-button pure-button-primary">註冊頁</a>
-				<a href="/JavaWeb/user" class="pure-button pure-button-primary">使用者列表</a>
+		
 			</fieldset>
 		</div>
 			

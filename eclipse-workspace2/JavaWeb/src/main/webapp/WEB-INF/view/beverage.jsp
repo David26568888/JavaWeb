@@ -14,6 +14,11 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 	</head>
 	<body style="padding: 20px">
+		<span style="font-size: 36px ; font-weight: bold" > 
+			超高級10元飲料訂購網 
+		</span>
+		<!-- menu-->
+		<%@include file="/WEB-INF/view/menu.jspf" %> 
 		
 		<table>
 			<td valign="top">
