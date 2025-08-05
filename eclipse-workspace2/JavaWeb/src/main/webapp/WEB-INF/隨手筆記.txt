@@ -1,0 +1,12 @@
+//以下為 Blockchain網站 讓密碼生成亂碼 用於儲存在DB用
+//https://andersbrownworth.com/blockchain/hash
+
+Lombok 使用方式
+Java - 五分鐘學會 Lombok 用法
+https://kucw.io/blog/2020/3/java-lombok/
+
+<!--學習用這個網站  做JSP樣式
+https://datatables.net/extensions/buttons/examples/initialisation/export.html -->
+
+世界第一高峰
+https://www.youtube.com/watch?v=xVjYutQ0cWU

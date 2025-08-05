@@ -1,0 +1,8 @@
+CSS樣式套用:
+https://pure-css.github.io/base/
+JS-JavaScript-動作
+
+
+Ngrok >>
+https://ngrok.com/downloads/windows
+ttp://127.0.0.1:4040                        
