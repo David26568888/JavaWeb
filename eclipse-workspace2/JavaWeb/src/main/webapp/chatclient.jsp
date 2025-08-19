@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -7,6 +9,9 @@
 		<link rel="stylesheet" href="/JavaWeb/css/buttons.css">
 	</head>
 	<body style="padding: 20px">
+		<!-- menu -->
+		<%@include file="/WEB-INF/view/menu.jspf" %>
+		
 		<h1>我的聊天室</h1>
 		<div class="pure-form">
 			<fieldset>
@@ -40,11 +45,11 @@
 			
 			// 配置 WebSocket
 			function setWebSocket() {
-				const wsurl = 'ws://localhost:8080//JavaWeb/chatserver';
-				//建立Socket連線
+				const wsurl = 'ws://' + window.location.host + '/JavaWeb/chatserver';
+				// 建立連線
 				webSocket = new WebSocket(wsurl);
 				
-				//連線成功後會自動調用的函式
+				// 連線成功後會自動調用的函式
 				webSocket.onopen = function() {
 					onOpenButton.disabled = true;
 					onCloseButton.disabled = false;
@@ -52,13 +57,13 @@
 					onMessageButton.disabled = false;
 				};
 				
-				//接收來自 websocket server 的訊息會自動調用的函式
+				// 接收來自 websocket server 的訊息會自動調用的函式
 				webSocket.onmessage = function(event) {
 					const message = event.data; // 接收來自 websocket server 的訊息
 					messageHistory.insertAdjacentHTML('afterbegin', message + '<br />'); // 插入資料
 				};
 				
-				//離線成功後會自動調用的函式
+				// 離線成功後會自動調用的函式
 				webSocket.onclose = function() {
 					onOpenButton.disabled = false;
 					onCloseButton.disabled = true;
@@ -66,7 +71,7 @@
 					onMessageButton.disabled = true;
 				};
 				
-				//發生錯誤後會自動調用的函式
+				// 發生錯誤時會自動調用的函式
 				webSocket.onerror = function(e) {
 					console.log(e);
 					alert(e);
